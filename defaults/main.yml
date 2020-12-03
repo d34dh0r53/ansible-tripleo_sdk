@@ -29,6 +29,9 @@ tripleo_sdk_developer_rebuild_rpms: false
 # Enable or disable the execution of the RPM build script.
 tripleo_sdk_developer_run_build: true
 
+# Enable or disable the execution of the RPM build script inside of a tmux session.
+tripleo_sdk_developer_run_build_tmux: true
+
 # Enable or disable blocking on the execution of the build script
 tripleo_sdk_developer_run_build_with_block: false
 

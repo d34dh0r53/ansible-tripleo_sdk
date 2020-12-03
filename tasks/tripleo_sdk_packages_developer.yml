@@ -57,9 +57,10 @@
   when:
     - tripleo_sdk_developer_rebuild_rpms | bool
 
-- name: Build script block
+- name: Build script block (tmux)
   when:
     - tripleo_sdk_developer_run_build | bool
+    - tripleo_sdk_developer_run_build_tmux | bool
   block:
     - name: Run build script
       shell: "{{ item }}"
@@ -78,3 +79,13 @@
         path: "{{ tripleo_sdk_build_tools_dir }}/packages.created"
       when:
         - tripleo_sdk_developer_run_build_with_block | bool
+
+- name: Build script block (console)
+  when:
+    - tripleo_sdk_developer_run_build | bool
+    - not tripleo_sdk_developer_run_build_tmux | bool
+  block:
+    - name: Run build script (blocking)
+      shell: "{{ item }}"
+      loop:
+        - "bash -c '{{ tripleo_sdk_build_tools_dir }}/build/packages.sh'"
