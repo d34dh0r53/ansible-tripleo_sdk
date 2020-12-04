@@ -88,4 +88,4 @@
     - name: Run build script (blocking)
       shell: "{{ item }}"
       loop:
-        - "bash -c '{{ tripleo_sdk_build_tools_dir }}/build/packages.sh'"
+        - "bash -c '{{ tripleo_sdk_build_tools_dir }}/build-packages.sh'"
